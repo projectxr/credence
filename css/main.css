@@ -389,10 +389,10 @@ body {
   background-size: cover;
   background-position: center;
   color: #fff;
-  -webkit-transition: -webkit-box-flex .5s ease;
-  transition: -webkit-box-flex .5s ease;
-  transition: flex .5s ease;
-  transition: flex .5s ease, -webkit-box-flex .5s ease, -ms-flex .5s ease;
+  -webkit-transition: -webkit-box-flex .5s linear;
+  transition: -webkit-box-flex .5s linear;
+  transition: flex .5s linear;
+  transition: flex .5s linear, -webkit-box-flex .5s linear, -ms-flex .5s linear;
   position: relative;
 }
 
@@ -416,16 +416,15 @@ body {
 .gallery-item .content {
   z-index: 2;
   text-align: center;
-  text-justify: center;
   margin: auto;
 }
 
 .gallery-item .content p {
-  -webkit-transition: visibility .5s step-start,visibility .5s step-end;
-  transition: visibility .5s step-start,visibility .5s step-end;
   max-width: 50%;
-  visibility: hidden;
+  opacity: 0;
   margin: auto;
+  -webkit-transition: opacity 0s;
+  transition: opacity 0s;
 }
 
 .gallery-item .content img {
@@ -441,22 +440,21 @@ body {
           flex: 2;
 }
 
-@media (min-width: 840px) {
-  .gallery-item:hover {
-    -webkit-box-flex: 3;
-        -ms-flex: 3;
-            flex: 3;
-  }
-}
-
 .gallery-item:hover .overlay {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .gallery-item:hover .content p {
-  max-width: 50%;
+  opacity: 1;
+  -webkit-transition: 0.5s step-end;
+  transition: 0.5s step-end;
   visibility: visible;
-  margin: auto;
+}
+
+@media (max-width: 840px) {
+  .gallery-item:hover .content p {
+    max-width: 75%;
+  }
 }
 
 .gallery-item:hover .content img {

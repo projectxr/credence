@@ -333,7 +333,7 @@ font-family: 'Roboto', sans-serif;
     background-size: cover;
     background-position: center;
     color: #fff;
-    transition: flex .5s ease;
+    transition: flex .5s linear;
     position: relative;
     @include desktop{
       flex:1; 
@@ -351,14 +351,12 @@ font-family: 'Roboto', sans-serif;
   .gallery-item .content {
     z-index: 2;
     text-align: center;
-    text-justify: center;
     margin:auto;
-    
     p{
-      transition: visibility .5s step-start,visibility .5s step-end ;
       max-width: 50%;
-      visibility: hidden;
+      opacity: 0; 
       margin:auto;
+      transition: opacity 0s;
     }
     img{
       height:10%;
@@ -369,17 +367,18 @@ font-family: 'Roboto', sans-serif;
   
   .gallery-item:hover {
     flex: 2;
-    @include desktop{
-      flex: 3;
-    }
+
     .overlay{
       background-color: rgba(0, 0, 0, 0.4);
     }
     .content{
       p{
-        max-width: 50%;
+        opacity: 1;
+        transition: 0.5s step-end;
         visibility: visible;
-        margin:auto;
+        @include phone{
+          max-width: 75%;
+        }
       }
       img{
         filter: grayscale(0%);
