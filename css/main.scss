@@ -1,5 +1,6 @@
 $mycolor: #adadad;
 $desktop: 840px;
+$phone: 600px;
 
 @mixin desktop {
     @media(min-width: #{$desktop}){
@@ -8,7 +9,7 @@ $desktop: 840px;
 }
 
 @mixin phone {
-  @media(max-width: #{$desktop}){
+  @media(max-width: #{$phone}){
       @content;
   }
 }
@@ -177,9 +178,6 @@ font-family: 'PT Sans', sans-serif;
     margin:auto;
     align-content: start; 
     align-items: flex-start;
-    @include desktop {
-      visibility: visible;
-    }
     @include phone {
       span{
         margin-bottom: 5%;
@@ -295,7 +293,7 @@ font-family: 'PT Sans', sans-serif;
 
   .gallery-work{
     display: flex;
-    height: 100vh;
+    height: 90vh;
   }
   
   .gallery-item {
