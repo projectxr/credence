@@ -170,6 +170,12 @@ body {
   }
 }
 
+@media (max-width: 840px) {
+  .services span {
+    margin-bottom: 5%;
+  }
+}
+
 .services h1 {
   font-size: 2.5rem;
   font-weight: 900;
@@ -184,12 +190,20 @@ body {
   text-decoration: none;
 }
 
+@media (max-width: 840px) {
+  .services .container a {
+    font-size: 1rem;
+  }
+}
+
 .services .container a:hover {
   color: #333;
   text-decoration: none;
 }
 
 .services .container span a > svg {
+  background-color: #adadad;
+  border-radius: 5%;
   -webkit-filter: gray;
           filter: gray;
   /* IE */
