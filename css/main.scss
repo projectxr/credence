@@ -1,5 +1,6 @@
 @import url('fonts.css');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'aos';
 
 $mycolor: #adadad;
 $desktop: 840px;
@@ -19,62 +20,50 @@ $phone: 840px;
 }
 
 
-.work-intro{
-  font-family: 'Roboto';
-    font-size:2.5rem;
-    font-weight:900;
-    margin-bottom:1.5rem;
-    margin-top:1.5rem; 
-    @include phone{
-      margin-bottom:1rem;
-      margin-top:1rem; 
-    }
-}
-
 #hero {
-    height:130vh;
+    height:100vh;
     width:100%;
     display:flex;
     align-items:top;
     justify-content: center;
-    background-color: #e6e6e6;
 }
 
 
-
-#hero::after {
-width:100%;
-height:140vh;
-content: '';
+#header-img{
+  z-index: 55;
+  width:100%;
+height:100vh;
+font-size:3em;
+top:-10vh;
 position:absolute;
-z-index:10;
-top:0;
-left:0;
+font-family: Arial, Helvetica, sans-serif;
+font-weight: 900;
+padding: 0;
 -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-background:rgba(0,0,0,0.5);
 @include desktop{
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 51% 100%, 0 90%);
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 51% 100%, 0 90%);
+    -webkit-clip-path: polygon(100% 90%, 50% 100%, 0 90%, 0 0, 100% 0);
+    clip-path: polygon(100% 90%, 50% 100%, 0 90%, 0 0, 100% 0);
+    font-size:5em;
 }
 }
-
 
 #hero video {
 width:100%;
-height:140vh;
+height:100vh;
+
 position:absolute;
-top:0;
+top:-10vh;
 left:0;
 z-index:5;
 object-fit:cover;
 font-family:'object-fit: cover';
 -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
-background:rgba(0,0,0,0.5);
+background:rgba(0,0,0,1);
 @include desktop{
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 51% 100%, 0 90%);
-    clip-path: polygon(0 0, 100% 0, 100% 90%, 51% 100%, 0 90%);
+    -webkit-clip-path: polygon(100% 90%, 50% 100%, 0 90%, 0 0, 100% 0);
+    clip-path: polygon(100% 90%, 50% 100%, 0 90%, 0 0, 100% 0);
 }
 }
 
@@ -87,6 +76,10 @@ font-family: Roboto, Times, serif;
 z-index:20;
 text-align:center;
 color:#ffffff;
+font-size:5em;
+@include phone {
+  font-size:3em;
+}
 }
 
 
@@ -94,53 +87,17 @@ color:#ffffff;
 #hero .caption h1 {
 
 text-transform: uppercase;
-font-size:2em;
+font-size:5em;
 font-family: 'Roboto', sans-serif;
 margin:0 auto;
+opacity: 0;
 }
 
 #hero .caption h2 {
-font-weight:400;
-font-size:1.5rem;
+font-weight:700;
+font-size:3em;
 margin:0;
 font-family: 'Roboto', sans-serif;
-}
-
-
-@media screen and (min-width:768px)
-{
-#hero .caption h1 {
-    font-size:2.5rem;
-}
-
-#hero .caption h2 {
-    font-size:1.75rem;
-}
-}
-
-
-@media screen and (min-width:992px)
-{
-#hero .caption h1 {
-    font-size:3rem;
-}
-
-#hero .caption h2 {
-    font-size:2rem;
-}
-}
-
-
-
-@media screen and (min-width:1200px)
-{
-#hero .caption h1 {
-    font-size:4rem;
-}
-
-#hero .caption h2 {
-    font-size:2.5rem;
-}
 }
 
 
@@ -187,7 +144,6 @@ font-family: 'Roboto', sans-serif;
     margin:auto;
     align-content: start; 
     align-items: flex-start;
-
     p{
       font-family: 'Roboto';
     font-size:2.5rem;
@@ -216,7 +172,7 @@ font-family: 'Roboto', sans-serif;
   .services .container a{
     margin: auto;
     font-size:1.3rem;
-    color:#58595b;
+    color:#ffffff;
     font-weight: 700;
     text-decoration: none;
     @include phone{
@@ -230,14 +186,11 @@ font-family: 'Roboto', sans-serif;
   }
 
   .services .container span a > svg{
-    background-color: #adadad;
     border-radius: 5%;
     filter: gray; /* IE */
     transition: filter 0.4s ease;
     filter: grayscale(100%) drop-shadow(0px 0px 0px #fff); /* Current draft standard */
-    #creative{
-      filter: brightness(120%);
-    }
+    
     @include phone{
       border-radius: 8%;
     }
@@ -259,8 +212,25 @@ font-family: 'Roboto', sans-serif;
     }
   }
 
+  [data-aos="start-service"] {
+    svg {
+      filter: grayscale(100%) drop-shadow(0px 0px 0px #fff); 
+      transition-property: filter;
+    }
+  }
+  [data-aos="start-service"].aos-animate {
+    svg{
+      filter: grayscale(0%) drop-shadow(1px 1px 1px rgba(#2f2e41, 0.3)) !important;
+    }
+    #shape{
+      animation: 10s linear infinite rotateIcon;
+      transform-origin: center center;
+      transform-box: fill-box;
+    }
+  }
+
   .services{
-    background-color: rgba(#adadad,0.3);
+    
     z-index:3;
 
    .icon-panel{
@@ -281,7 +251,7 @@ font-family: 'Roboto', sans-serif;
      img{
        height:5rem;
        width:5rem;
-       transition: filter 0.4s ease;
+       transition: all 1s ease;
        filter: grayscale(100%);
        @include phone{
         height:4rem;
@@ -305,10 +275,19 @@ font-family: 'Roboto', sans-serif;
     
   }
   
-  .about-area {
-    z-index: 3;
-    background-color: #58595b;
+  
+  .work-intro{
+    font-family: 'Roboto';
+      font-size:2.5rem;
+      font-weight:900;
+      margin-bottom:1.5rem;
+      margin-top:1.5rem; 
+      @include phone{
+        margin-bottom:1rem;
+        margin-top:1rem; 
+      }
   }
+  
 
   @media(max-width:960px){
     .container{
@@ -335,8 +314,9 @@ font-family: 'Roboto', sans-serif;
     color: #fff;
     transition: flex .5s linear;
     position: relative;
-    @include desktop{
+    @include phone{
       flex:1; 
+      transition: flex .3s linear;
     }
   }
   
@@ -354,9 +334,9 @@ font-family: 'Roboto', sans-serif;
     margin:auto;
     p{
       max-width: 50%;
-      opacity: 0; 
+      visibility: hidden; 
       margin:auto;
-      transition: opacity 0.1s;
+      transition: visibility 0.1s;
     }
     img{
       height:10%;
@@ -373,11 +353,12 @@ font-family: 'Roboto', sans-serif;
     }
     .content{
       p{
-        opacity: 1;
-        transition: 0.5s step-end;
         visibility: visible;
+        transition: visibility 0.5s step-end;
+        
         @include phone{
           max-width: 75%;
+          transition: 0.3s step-end;
         }
       }
       img{
@@ -400,7 +381,7 @@ font-family: 'Roboto', sans-serif;
   }
 
   #Namami{
-    background-image: url('../img/Namami.jpg');
+    background-image: url('../img/RoyalEnvy.jpg');
   }
 
 
@@ -472,22 +453,29 @@ font-family: 'Roboto', sans-serif;
     font-family:  Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   }
   
-  .footer {
-    padding: 25px 0;
-    text-align: center;
-  }
-  
-  .footer span.copyright {
-    font-size: 90%;
-    line-height: 40px;
-    text-transform: none;
-    font-family:  Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  .footer{
+    height:100vh;
+    width:100vw;
+    background-size: cover;
+    animation: 10s footerBg ease infinite;
+    background-image: url("../img/dayNight/landscape-morning.svg");
   }
 
-  .footer a{
-    text-decoration: none;
-    color: #adadad;
-  }
 
+  @keyframes footerBg {
+    0%{
+      background-image: url("../img/dayNight/landscape-morning.svg");
+    }
+    25%{
+      background-image: url("../img/dayNight/landscape-day.svg");
+    }
+    50%{
+      background-image: url("../img/dayNight/landscape-evening.svg");
+    }
+    75%{
+      background-image: url("../img/dayNight/landscape-night.svg");
+    }
+  }
 
   
